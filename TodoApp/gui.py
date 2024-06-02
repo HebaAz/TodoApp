@@ -2,25 +2,25 @@ import functions
 import FreeSimpleGUI as sg
 import time
 
-sg.theme("DarkPurple3")
+sg.theme("Green")
 
 clock = sg.Text('', key = 'clock')
-label = sg.Text("Type in a to-do")
-input_box = sg.InputText(tooltip="Enter Todo", key='new_todo') #tooltip will show up when you mouseover
+label = sg.Text("Type in a task: ")
+input_box = sg.InputText(tooltip="Enter Todo", key='new_todo', size=46) #tooltip will show up when you mouseover
 
-list_todos = sg.Listbox(values=functions.get_todos(), key='todos', enable_events=True, size=[45, 10])
+list_todos = sg.Listbox(values=functions.get_todos(), key='todos', enable_events=True, size=[45, 5])
 
 #Buttons
 add_button = sg.Button("Add", size = 10)
-edit_button = sg.Button("Edit")
-complete_button = sg.Button("Complete")
+edit_button = sg.Button("Edit", size = 10)
+complete_button = sg.Button("Complete", size = 10)
 exit_button = sg.Button("Exit")
 
 mainWindow = sg.Window('My todo app', layout = [[clock],
                                                 [label], 
                                                 [input_box, add_button],
-                                                [list_todos, edit_button, complete_button],
-                                                [exit_button]], 
+                                                [list_todos, complete_button],
+                                                [edit_button, exit_button]], 
                                                 font = ('Helevetica', 20))
 
 while True:
